@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Get pdf from website</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    </head>
+    <body>
+        <input type="text" id="input"/>
+        <br />
+        <button id="submit">Get pdf</button>
+        <footer class="page-footer">
+            <div class="container">
+                Web was designed by <a href="https://www.facebook.com/vuveu98">Trí Vũ</a>
+            </div>
+        </footer>
+        <script>
+            let submit = document.getElementById("submit")
+            let input = document.getElementById("input")
+            submit.onclick = () => {
+                submit.disabled = true
+                let link = input.value
+                fetch(`/api/getpdf?link=${link}`)
+                .then(response => response.blob())
+                .then(blob => {
+                    var url = window.URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.target = "_blank";
+                    a.click();      
+                    submit.disabled = false              
+                });
+            }
+        </script>
+    </body>
+</html>

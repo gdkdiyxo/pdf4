@@ -1,0 +1,12 @@
+.page-footer {
+    background: #3b434c;
+    color: #a2abb7;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 300;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
